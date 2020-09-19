@@ -1,17 +1,29 @@
 ;; 设置文件编码
-(set-language-environment "UTF-8")
+;; ((set-charset-priority 'unicode) 
+;; (setq locale-coding-system   'utf-8)    ; pretty
+;; (set-terminal-coding-system  'utf-8)    ; pretty
+;; (set-keyboard-coding-system  'utf-8)    ; pretty
+;; (set-selection-coding-system 'utf-8)    ; please
+;; (prefer-coding-system        'utf-8)    ; with sugar on top
+;; (setq default-process-coding-system '(utf-8-unix . utf-8-unix))set-language-environment "UTF-8")
 ;; 关闭自动备份
 (setq make-backup-files nil)
 ;; 关闭自动保存的文件
 (setq auto-save-default nil)
-
+;; 关闭自动换行
+(setq truncate-partial-width-windows t)
+;; 创建新行的动作
+;; 回车时创建新行并且对齐
+(global-set-key (kbd "RET") 'newline-and-indent)
+;; 取消对齐创建的新行
+(global-set-key (kbd "S-<return>") 'comment-indent-new-line)
 ;; Dired-mode 默认递归
 (setq dired-recursive-deletes 'always)
 (setq dired-recursive-copies 'always)
 
+
 ;; Dired-mode 只用一个buffer
 (put 'dired-find-alternate-file 'disabled nil)
-
 ;; 主动加载 Dired Mode
 ;; (require 'dired)
 ;; (defined-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
@@ -103,6 +115,15 @@
 					try-complete-lisp-symbol-partially
 					try-complete-lisp-symbol))
 
+;; 工作区
+(use-package 
+  perspeen
+  :diminish 
+  :ensure t 
+  :init
+  ;; (setq perspeen-use-tab t)
+  (setq perspeen-keymap-prefix [C-tab]) 
+  :config (perspeen-mode))
 
 ;; recentf
 
@@ -127,5 +148,35 @@ recentf-list))
 (defun open-init-file()
   (interactive)
   (find-file "~/.emacs.d/init.el"))
+
+
+;; 撤销树
+(use-package 
+  undo-tree 
+  :ensure t 
+  :hook (after-init . global-undo-tree-mode) 
+  :init (setq undo-tree-visualizer-timestamps t undo-tree-enable-undo-in-region nil undo-tree-auto-save-history nil)
+
+  ;; HACK: keep the diff window
+  (with-no-warnings (make-variable-buffer-local 'undo-tree-visualizer-diff) 
+                    (setq-default undo-tree-visualizer-diff t)))
+;; 项目管理
+(use-package 
+  projectile 
+  :ensure t)
+
+(use-package company 
+  :defer 2 
+  :hook (after-init . global-company-mode) 
+  :init (setq company-tooltip-align-annotations t company-idle-delay 0 company-echo-delay 0
+              company-minimum-prefix-length 2 company-require-match nil company-dabbrev-ignore-case
+              nil company-dabbrev-downcase nil company-show-numbers t) 
+  :config 
+  :bind (:map company-active-map
+              ("M-n" . nil) 
+              ("M-p" . nil) 
+              ("C-n" . #'company-select-next) 
+              ("C-p" . #'company-select-previous)) 
+      ) 
 
 (provide 'init-better-defaults)

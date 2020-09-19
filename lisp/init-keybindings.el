@@ -33,11 +33,11 @@
 ;; expand-region
 ;; (global-set-key (kbd "C-=") 'er/expand-region)
 ;; company
-(with-eval-after-load 'company
-  (define-key company-active-map (kbd "M-n") nil)
-  (define-key company-active-map (kbd "M-p") nil)
-  (define-key company-active-map (kbd "C-n") #'company-select-next)
-  (define-key company-active-map (kbd "C-p") #'company-select-previous))
+;; (with-eval-after-load 'company
+  ;; (define-key company-active-map (kbd "M-n") nil)
+  ;; (define-key company-active-map (kbd "M-p") nil)
+  ;; (define-key company-active-map (kbd "C-n") #'company-select-next)
+  ;; (define-key company-active-map (kbd "C-p") #'company-select-previous))
 ;; occurmode
 (global-set-key (kbd "M-s o") 'occur-dwim)
 
