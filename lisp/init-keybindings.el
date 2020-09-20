@@ -25,6 +25,8 @@
 ;; Hippie 补全
 (global-set-key (kbd "s-/") 'hippie-expand)
 
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c L") 'org-insert-link)
 ;; 设置 org-agenda 打开快捷键
 (global-set-key (kbd "C-c a") 'org-agenda)
 ;; org-capture

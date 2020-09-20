@@ -72,6 +72,12 @@
   :hook ((counsel-mode . counsel-projectile-mode)) 
   :init (setq counsel-projectile-grep-initial-input '(ivy-thing-at-point)) 
               )
+<<<<<<< HEAD
+
+(use-package format-all
+  :ensure t)
+=======
+>>>>>>> 074f291... alot of update
 
 (defvar my/packages '(
 		;; ---PackageManage
