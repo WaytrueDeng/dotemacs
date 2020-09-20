@@ -17,6 +17,10 @@
    (evil-leader/set-key
      "ff" 'find-file
      "bb" 'switch-to-buffer
+     "mj" 'bookmark-jump
+     "ms" 'bookmark-set
+     "mS" 'bookmark-save
+     "md" 'bookmark-delete
      "0"  'select-window-0
      "1"  'select-window-1
      "2"  'select-window-2
@@ -64,7 +68,12 @@
          ("M-g e" . 'avy-goto-word-0)))
  (use-package magit
   :ensure t
-  :commands (magit))
+  :commands (magit)
+  :bind(
+	("")
+
+
+	))
 
 (use-package 
   counsel-projectile 
@@ -121,7 +130,7 @@
 
 
 ;; 启动插件
-(global-evil-leader-mode 1)
+;; (global-evil-leader-mode 1)
 (global-company-mode 1)
 (counsel-mode 1)
 (smartparens-global-mode 1)

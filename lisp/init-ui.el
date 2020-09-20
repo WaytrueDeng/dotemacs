@@ -13,6 +13,10 @@
 ;; 更改光标的样式（不能生效，解决方案见第二集）
 (setq-default cursor-type 'bar)
 
+;; 默认垂直分裂
+(setq split-height-threshold nil)
+(setq split-width-threshold 0)
+
 ;; 关闭启动帮助画面
 (setq inhibit-splash-screen 1)
 
@@ -26,7 +30,7 @@
 (global-hl-line-mode 1)
 ;; 载入插件
 
-(load-theme 'solarized-light 1)
+(load-theme 'solarized-dark 1)
 
 (use-package all-the-icons
   :ensure t)
@@ -65,7 +69,6 @@
   (setq dashboard-banner-logo-title
         "This Is My Emacs")
   ;; 设置banner
-  (setq dashboard-startup-banner "")
   (setq dashboard-center-content t) 
   (setq dashboard-set-heading-icons t) 
   ;; (setq dashboard-set-file-icons t) 
@@ -121,5 +124,24 @@
   :ensure t
   :hook (after-init . nyan-mode))
 
+;; (use-package doom-themes
+;;   :ensure t
+;;   :config
+;;   ;; Global settings (defaults)
+;;   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+;;         doom-themes-enable-italic t) ; if nil, italics is universally disabled
+;;   (load-theme 'doom-one t)
+;; 
+;;   ;; Enable flashing mode-line on errors
+;;   (doom-themes-visual-bell-config)
+;;   
+;;   ;; Enable custom neotree theme (all-the-icons must be installed!)
+;;   (doom-themes-neotree-config)
+;;   ;; or for treemacs users
+;;   (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+;;   (doom-themes-treemacs-config)
+;;   
+;;   ;; Corrects (and improves) org-mode's native fontification.
+;;   (doom-themes-org-config))
 
 (provide 'init-ui)

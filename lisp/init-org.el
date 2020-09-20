@@ -1,26 +1,12 @@
 (require 'org)
 (setq org-src-fontify-natively t)
-(setq org-capture-templates
-      '(("t" "Todo" entry (file+headline "~/Org/gtd.org" "工作安排")
-	 "* TODO [#B] %?\n  %i\n"
-	 :empty-lines 1)))
-
 ;; 设置默认 Org Agenda 文件目录
 (setq org-agenda-files '("~/Org"))
 (setq org-startup-indented t)
+;; ---org-capture---
 
-(use-package org-bullets
-  :ensure t
-  :hook (org-mode . org-bullets-mode)
-  )
-
-(use-package evil-org
-  :ensure t
-  :after org
-  :config
-  (add-hook 'org-mode-hook 'evil-org-mode)
-  (add-hook 'evil-org-mode-hook
-            (lambda ()
+ (setq org-capture-templates
+   da ()
               (evil-org-set-key-theme)))
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))

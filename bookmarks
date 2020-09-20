@@ -2,9 +2,24 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("org-capture-last-stored"
- (filename . "~/Org/2020-09-20.org")
+(("org-refile-last-stored"
+ (filename . "~/Org/daily/2020-09-20.org")
  (front-context-string)
- (rear-context-string . "tle: 2020-09-20\n")
- (position . 21))
+ (rear-context-string . "[继续测试]]\n* 简答题 \n\n")
+ (position . 713))
+("init-keybindings.el"
+ (filename . "~/.emacs.d/lisp/init-keybindings.el")
+ (front-context-string . ";; Hippie 补全\n(gl")
+ (rear-context-string . "-windows\n;;  )\n\n")
+ (position . 603))
+("org-capture-last-stored"
+ (filename . "~/Org/org-roam/20200920165538-~also_the_test.org")
+ (front-context-string . "#+title: also th")
+ (rear-context-string)
+ (position . 1))
+("init-packages.el"
+ (filename . "~/.emacs.d/lisp/init-packages.el")
+ (front-context-string . "\n     \"0\"  'sele")
+ (rear-context-string . "witch-to-buffer\n")
+ (position . 484))
 )

@@ -20,6 +20,9 @@
    '("2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" default))
  '(evil-leader/in-all-states t)
  '(evil-leader/leader "SPC")
+ '(org-roam-capture-templates
+   '(("d" "default" plain #'org-roam-capture--get-point "%?" :file-name "~/Org/org-roam/%<%Y%m%d%H%M%S>-~${slug}" :head "#+title: ${title}
+" :unnarrowed t :immediate-finish t :jump-to-captured t)))
  '(package-selected-packages
    '(use-package company hungry-delete swiper counsel expand-region iedit auto-yasnippet evil evil-leader window-numbering evil-surround js2-mode which-key web-mode nodejs-repl exec-path-from-shell popwin solarized-theme)))
 (custom-set-faces
