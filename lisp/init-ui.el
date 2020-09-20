@@ -23,7 +23,7 @@
 ;; 更改显示字体大小 16pt
 ;; http://stackoverflow.com/questions/294664/how-to-set-the-font-size-in-emacs
 (set-face-attribute 'default nil :font "Source Code Pro for Powerline" :height 160)
-(set-fontset-font t 'han "WenQuanYi Zen Hei Mono")
+(set-fontset-font t 'han "WenQuanYi Micro Hei Mono")
 ;; 自动括号匹配
 (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
 ;; 高亮当前行，当文本内容很多时可以很容易找到光标的位置。
@@ -71,7 +71,7 @@
   ;; 设置banner
   (setq dashboard-center-content t) 
   (setq dashboard-set-heading-icons t) 
-  ;; (setq dashboard-set-file-icons t) 
+  (setq dashboard-set-file-icons t) 
   (setq dashboard-set-navigator t))
 
 (use-package 

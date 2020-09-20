@@ -1,6 +1,9 @@
 ((magit-cherry-pick
   ("--ff"))
+ (magit-commit nil)
  (magit-dispatch nil)
  (magit-log
   ("-n256" "--graph" "--decorate"))
- (magit-status-jump nil))
+ (magit-push nil)
+ (magit-status-jump nil)
+ (magit-worktree nil))

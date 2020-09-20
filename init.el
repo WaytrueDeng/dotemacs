@@ -21,10 +21,10 @@
  '(evil-leader/in-all-states t)
  '(evil-leader/leader "SPC")
  '(org-roam-capture-templates
-   '(("d" "default" plain #'org-roam-capture--get-point "%?" :file-name "~/Org/org-roam/%<%Y%m%d%H%M%S>-~${slug}" :head "#+title: ${title}
+   '(("d" "default" plain #'org-roam-capture--get-point "%?" :file-name "~/Org/org-roam/%<%Y%m%d%H>-${slug}" :head "#+title: ${title}
 " :unnarrowed t :immediate-finish t :jump-to-captured t)))
  '(package-selected-packages
-   '(use-package company hungry-delete swiper counsel expand-region iedit auto-yasnippet evil evil-leader window-numbering evil-surround js2-mode which-key web-mode nodejs-repl exec-path-from-shell popwin solarized-theme)))
+   '(org-super-agenda use-package company hungry-delete swiper counsel expand-region iedit auto-yasnippet evil evil-leader window-numbering evil-surround js2-mode which-key web-mode nodejs-repl exec-path-from-shell popwin solarized-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
