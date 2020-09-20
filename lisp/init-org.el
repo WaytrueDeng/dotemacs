@@ -1,12 +1,4 @@
-<<<<<<< HEAD
-
-
-
-
-=======
 (require 'org)
->>>>>>> 074f291... alot of update
-
 (setq org-src-fontify-natively t)
 (setq org-capture-templates
       '(("t" "Todo" entry (file+headline "~/Org/gtd.org" "工作安排")

@@ -65,10 +65,7 @@
   (setq dashboard-banner-logo-title
         "This Is My Emacs")
   ;; 设置banner
-<<<<<<< HEAD
-=======
   (setq dashboard-startup-banner "")
->>>>>>> 074f291... alot of update
   (setq dashboard-center-content t) 
   (setq dashboard-set-heading-icons t) 
   ;; (setq dashboard-set-file-icons t) 

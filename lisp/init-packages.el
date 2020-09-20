@@ -72,13 +72,8 @@
   :hook ((counsel-mode . counsel-projectile-mode)) 
   :init (setq counsel-projectile-grep-initial-input '(ivy-thing-at-point)) 
               )
-<<<<<<< HEAD
-
 (use-package format-all
   :ensure t)
-=======
->>>>>>> 074f291... alot of update
-
 (defvar my/packages '(
 		;; ---PackageManage
 		use-package
@@ -126,7 +121,7 @@
 
 
 ;; 启动插件
-;; (global-evil-leader-mode 1)
+(global-evil-leader-mode 1)
 (global-company-mode 1)
 (counsel-mode 1)
 (smartparens-global-mode 1)
