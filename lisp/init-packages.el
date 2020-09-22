@@ -3,8 +3,8 @@
  (when (>= emacs-major-version 24)
      (require 'package)
      (package-initialize)
-     (setq package-archives '(("gnu"   . "https://elpa.emacs-china.org/gnu/")
-		      ("melpa" . "https://elpa.emacs-china.org/melpa/"))))
+     (setq package-archives '(("gnu"   . "https://elpa.gnu.org/packages/")
+		      ("melpa" . "https://melpa.org/packages/"))))
 
 ;; 注意 elpa.emacs-china.org 是 Emacs China 中文社区在国内搭建的一个 ELPA 镜像
 
@@ -100,6 +100,7 @@
 		evil-leader
 		window-numbering
 		evil-surround
+		smartparens
 		;; --- Major Mode ---
 		js2-mode
 		which-key

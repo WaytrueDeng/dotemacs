@@ -10,6 +10,11 @@
 (setq make-backup-files nil)
 ;; 关闭自动保存的文件
 (setq auto-save-default nil)
+;; Avoid #file.org# to appear
+(auto-save-visited-mode)
+(setq create-lockfiles nil)
+;; Avoid filename.ext~ to appear
+(setq make-backup-files nil)
 ;; 关闭自动换行
 (setq truncate-partial-width-windows t)
 ;; 创建新行的动作
@@ -147,7 +152,7 @@ recentf-list))
 ;; 快速打开配置文件
 (defun open-init-file()
   (interactive)
-  (find-file "~/.emacs.d/init.el"))
+  (find-file "~/Org/2020-09-22.org"))
 
 
 ;; 撤销树

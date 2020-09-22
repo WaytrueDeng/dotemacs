@@ -5,7 +5,7 @@
     (git-commit "20200516")
     (transient "20200601")
     (with-editor "20200522"))
-  :commit "0ed84832bcd6e40802c43b662ed7f29b86695c76" :keywords
+  :commit "b49dfd7d0f11b15aaf58d36bcc4ea260b5e013da" :keywords
   '("git" "tools" "vc"))
 ;; Local Variables:
 ;; no-byte-compile: t

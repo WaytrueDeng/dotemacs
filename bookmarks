@@ -13,8 +13,8 @@
  (rear-context-string . "-windows\n;;  )\n\n")
  (position . 603))
 ("org-capture-last-stored"
- (filename . "~/Org/org-roam/2020092023-~管型.org")
- (front-context-string)
+ (filename . "~/Org/2020092222-foo2.org")
+ (front-context-string . "#+title: foo2\n\n ")
  (rear-context-string)
  (position . 1))
 ("init-packages.el"
