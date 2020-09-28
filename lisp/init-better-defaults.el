@@ -11,7 +11,6 @@
 ;; 关闭自动保存的文件
 (setq auto-save-default nil)
 ;; Avoid #file.org# to appear
-(auto-save-visited-mode)
 (setq create-lockfiles nil)
 ;; Avoid filename.ext~ to appear
 (setq make-backup-files nil)
@@ -149,22 +148,22 @@ recentf-list))
 (fname (funcall complete-fun "File Name: " file-list)))
 (find-file (cdr (assoc fname path-table)))))
 
-;; 快速打开配置文件
+;; 快速文件
 (defun open-init-file()
   (interactive)
-  (find-file "~/Org/2020-09-22.org"))
+  (find-file "~/Org/index.org"))
 
 
 ;; 撤销树
-(use-package 
-  undo-tree 
-  :ensure t 
-  :hook (after-init . global-undo-tree-mode) 
-  :init (setq undo-tree-visualizer-timestamps t undo-tree-enable-undo-in-region nil undo-tree-auto-save-history nil)
-
-  ;; HACK: keep the diff window
-  (with-no-warnings (make-variable-buffer-local 'undo-tree-visualizer-diff) 
-                    (setq-default undo-tree-visualizer-diff t)))
+;;(use-package 
+;;  undo-tree 
+;;  :ensure t 
+;;  :hook (after-init . global-undo-tree-mode) 
+;;  :init (setq undo-tree-visualizer-timestamps t undo-tree-enable-undo-in-region nil undo-tree-auto-save-history nil)
+;;
+;;  ;; HACK: keep the diff window
+;;  (with-no-warnings (make-variable-buffer-local 'undo-tree-visualizer-diff) 
+;;                    (setq-default undo-tree-visualizer-diff t)))
 ;; 项目管理
 (use-package 
   projectile 
@@ -183,5 +182,24 @@ recentf-list))
               ("C-n" . #'company-select-next) 
               ("C-p" . #'company-select-previous)) 
       ) 
+(use-package sis
+  ;; :hook
+  ;; enable the /follow context/ and /inline region/ mode for specific buffers
+  ;; (((text-mode prog-mode) . sis-follow-context-mode)
+  ;;  ((text-mode prog-mode) . sis-inline-mode))
+  :ensure t
+  :config
+  ;; For MacOS
+  (sis-ism-lazyman-config "1" "2" 'fcitx5)
+
+  ;; enable the /cursor color/ mode
+  (sis-global-cursor-color-mode t)
+  ;; enable the /respect/ mode
+  (sis-global-respect-mode t)
+  ;; enable the /follow context/ mode for all buffers
+  (sis-global-follow-context-mode t)
+  ;; enable the /inline english/ mode for all buffers
+  (sis-global-inline-mode t)
+  )
 
 (provide 'init-better-defaults)

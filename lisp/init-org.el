@@ -1,11 +1,14 @@
 (require 'org)
-(setq org-src-fontify-natively t)
+;; (setq org-src-fontify-natively t)
 (setq evil-org-set-key-theme '(navigation insert textobjects additional calendar))
 
+(setq org-log-done 'time)
 ;; 设置默认 Org Agenda 文件目录
 (setq org-agenda-files '("~/Org"))
 (setq org-startup-indented t)
 ;; ---org-capture---
+ (setq org-todo-keywords
+       '((sequence "TODO(t)" "|" "DONE(d)" "MISS(m)" "CANCLE(c)")))
 
 ;; org-super-agenda
 
@@ -38,7 +41,7 @@
 (use-package org-roam-server
   :ensure t
   :config
-  (setq org-roam-server-host "127.0.0.1"
+  (setq org-roam-server-host "0.0.0.0"
         org-roam-server-port 8080
         org-roam-server-authenticate nil
         org-roam-server-export-inline-images t
@@ -105,4 +108,21 @@
  )
 (org-super-agenda-mode 1)
   )
+
+(defun +org/opened-buffer-files ()
+  "Return the list of files currently opened in emacs"
+  (delq nil
+        (mapcar (lambda (x)
+                  (if (and (buffer-file-name x)
+                           (string-match "\\.org$"
+                                         (buffer-file-name x)))
+                      (buffer-file-name x)))
+                (buffer-list))))
+
+(setq org-refile-targets '((+org/opened-buffer-files :maxlevel . 1)))
+(setq org-refile-use-outline-path 'file)
+;; makes org-refile outline working with helm/ivy
+(setq org-outline-path-complete-in-steps nil)
+(setq org-refile-allow-creating-parent-nodes 'confirm)
+
 (provide 'init-org)

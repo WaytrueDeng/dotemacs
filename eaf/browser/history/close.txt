@@ -4,3 +4,8 @@ https://www.google.com/search?ei=7nJnX726BMaVr7wPq-usqA0&q=ls&oq=ls&gs_lcp=CgZwc
 https://www.bilibili.com/?spm_id_from=333.788.b_696e7465726e6174696f6e616c486561646572.1
 https://www.bilibili.com/
 https://zh.wikipedia.org/zh-tw/Ls#示例
+http://bilibili/
+https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dls&q=EgRlILvMGPzrv_sFIhkA8aeDS4MbYi2FAOtWZyGdz_VonAToWFCQMgFy
+https://www.bilibili.com/
+https://www.bilibili.com/ranking?spm_id_from=333.851.b_7072696d61727950616765546162.3
+http://127.0.0.1:8080/

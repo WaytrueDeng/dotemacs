@@ -3,20 +3,20 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-refile-last-stored"
- (filename . "~/Org/Agenda.org")
- (front-context-string . "** TODO [#A] 学习英")
- (rear-context-string . "肉训练\n- [ ] 慢跑三公里\n")
- (position . 196))
+ (filename . "~/Org/超声.org")
+ (front-context-string . "* [[超声诊断的基础和原理]]")
+ (rear-context-string)
+ (position . 1))
 ("init-keybindings.el"
  (filename . "~/.emacs.d/lisp/init-keybindings.el")
  (front-context-string . ";; Hippie 补全\n(gl")
  (rear-context-string . "-windows\n;;  )\n\n")
  (position . 603))
 ("org-capture-last-stored"
- (filename . "~/Org/2020092222-foo2.org")
- (front-context-string . "#+title: foo2\n\n ")
- (rear-context-string)
- (position . 1))
+ (filename . "~/Org/2020-09-27.org")
+ (front-context-string)
+ (rear-context-string . "          :没学过:\n")
+ (position . 530))
 ("init-packages.el"
  (filename . "~/.emacs.d/lisp/init-packages.el")
  (front-context-string . "\n     \"0\"  'sele")

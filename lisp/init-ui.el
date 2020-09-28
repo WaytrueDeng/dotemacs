@@ -24,13 +24,14 @@
 ;; http://stackoverflow.com/questions/294664/how-to-set-the-font-size-in-emacs
 (set-face-attribute 'default nil :font "Source Code Pro for Powerline" :height 160)
 (set-fontset-font t 'han "WenQuanYi Micro Hei Mono")
+(setq face-font-rescale-alist '(("monospace" . 1.0) ("WenQuanYi" . 1.23)))
 ;; 自动括号匹配
 (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
 ;; 高亮当前行，当文本内容很多时可以很容易找到光标的位置。
 (global-hl-line-mode 1)
 ;; 载入插件
 
-(load-theme 'solarized-dark 1)
+(load-theme 'doom-one 1)
 
 (use-package all-the-icons
   :ensure t)
