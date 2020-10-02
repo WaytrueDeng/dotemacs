@@ -3,20 +3,20 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-refile-last-stored"
- (filename . "~/Org/超声.org")
- (front-context-string . "* [[超声诊断的基础和原理]]")
- (rear-context-string)
- (position . 1))
+ (filename . "~/Org/临床药理.org")
+ (front-context-string . "* 临床药代动力学应用 \n:LO")
+ (rear-context-string . "时间.org][血药峰时间]]\n")
+ (position . 1545))
 ("init-keybindings.el"
  (filename . "~/.emacs.d/lisp/init-keybindings.el")
  (front-context-string . ";; Hippie 补全\n(gl")
  (rear-context-string . "-windows\n;;  )\n\n")
  (position . 603))
 ("org-capture-last-stored"
- (filename . "~/Org/2020-09-27.org")
+ (filename . "~/Org/2020-10-02.org")
  (front-context-string)
- (rear-context-string . "          :没学过:\n")
- (position . 530))
+ (rear-context-string . "异\n- 识别各种正常的生理变异\n")
+ (position . 3637))
 ("init-packages.el"
  (filename . "~/.emacs.d/lisp/init-packages.el")
  (front-context-string . "\n     \"0\"  'sele")

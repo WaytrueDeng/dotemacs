@@ -31,7 +31,7 @@
 (global-hl-line-mode 1)
 ;; 载入插件
 
-(load-theme 'doom-one 1)
+(load-theme 'doom-snazzy 1)
 
 (use-package all-the-icons
   :ensure t)
