@@ -3,20 +3,20 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-refile-last-stored"
- (filename . "~/Org/临床药理.org")
- (front-context-string . "* 临床药代动力学应用 \n:LO")
- (rear-context-string . "时间.org][血药峰时间]]\n")
- (position . 1545))
+ (filename . "~/Org/临床诊断.org")
+ (front-context-string . "** 简答题          ")
+ (rear-context-string . "位置改变的生理性因素有哪些]]\n")
+ (position . 2202))
 ("init-keybindings.el"
  (filename . "~/.emacs.d/lisp/init-keybindings.el")
  (front-context-string . ";; Hippie 补全\n(gl")
  (rear-context-string . "-windows\n;;  )\n\n")
  (position . 603))
 ("org-capture-last-stored"
- (filename . "~/Org/2020-10-02.org")
+ (filename . "~/Org/2020-10-06.org")
  (front-context-string)
- (rear-context-string . "异\n- 识别各种正常的生理变异\n")
- (position . 3637))
+ (rear-context-string . "音强度改变的常见原因与机制]]\n")
+ (position . 1178))
 ("init-packages.el"
  (filename . "~/.emacs.d/lisp/init-packages.el")
  (front-context-string . "\n     \"0\"  'sele")

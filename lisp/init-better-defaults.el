@@ -15,7 +15,7 @@
 ;; Avoid filename.ext~ to appear
 (setq make-backup-files nil)
 ;; 关闭自动换行
-(setq truncate-partial-width-windows t)
+;; (setq truncate-partial-width-windows t)
 ;; 创建新行的动作
 ;; 回车时创建新行并且对齐
 (global-set-key (kbd "RET") 'newline-and-indent)
