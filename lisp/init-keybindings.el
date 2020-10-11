@@ -9,6 +9,14 @@
 ;; evil
 (setcdr evil-insert-state-map nil)
 (define-key evil-insert-state-map [escape] 'evil-normal-state)
+(define-key evil-normal-state-map (kbd "RET") 'org-open-at-point)
+(define-key evil-normal-state-map (kbd "DEL") 'org-mark-ring-goto)
+(define-key evil-normal-state-map (kbd "Q") 'delete-window)
+(define-key evil-insert-state-map (kbd "[[") #'my/insert-roam-link)
+
+
+
+
 
 ;;;; evil-leader
 ;;(evil-leader/set-key

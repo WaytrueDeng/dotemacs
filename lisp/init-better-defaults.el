@@ -182,24 +182,35 @@ recentf-list))
               ("C-n" . #'company-select-next) 
               ("C-p" . #'company-select-previous)) 
       ) 
-(use-package sis
-  ;; :hook
-  ;; enable the /follow context/ and /inline region/ mode for specific buffers
-  ;; (((text-mode prog-mode) . sis-follow-context-mode)
-  ;;  ((text-mode prog-mode) . sis-inline-mode))
-  :ensure t
-  :config
-  ;; For MacOS
-  (sis-ism-lazyman-config "1" "2" 'fcitx5)
+;; (use-package sis
+;;   ;; :hook
+;;   ;; enable the /follow context/ and /inline region/ mode for specific buffers
+;;   ;; (((text-mode prog-mode) . sis-follow-context-mode)
+;;   ;;  ((text-mode prog-mode) . sis-inline-mode))
+;;   :ensure t
+;;   :config
+;;   ;; For MacOS
+;;   (sis-ism-lazyman-config "1" "2" 'fcitx5)
+;; 
+;;   ;; enable the /cursor color/ mode
+;;   (sis-global-cursor-color-mode t)
+;;   ;; enable the /respect/ mode
+;;   (sis-global-respect-mode t)
+;;   ;; enable the /follow context/ mode for all buffers
+;;   (sis-global-follow-context-mode t)
+;;   ;; enable the /inline english/ mode for all buffers
+;;   (sis-global-inline-mode t)
+;;   )
 
-  ;; enable the /cursor color/ mode
-  (sis-global-cursor-color-mode t)
-  ;; enable the /respect/ mode
-  (sis-global-respect-mode t)
-  ;; enable the /follow context/ mode for all buffers
-  (sis-global-follow-context-mode t)
-  ;; enable the /inline english/ mode for all buffers
-  (sis-global-inline-mode t)
-  )
+(defun my/changeinput2en()
+    "this is a function automatic changing input method to en"
+  (interactive)
+  (shell-command "fcitx5-remote -c"))
 
+(defun my/changeinput2cn()
+    "this is a function automatic changing input method to en"
+  (interactive)
+  (shell-command "fcitx5-remote -o"))
+(add-hook 'evil-insert-state-entry-hook #'my/changeinput2cn)
+(add-hook 'evil-normal-state-entry-hook #'my/changeinput2en)
 (provide 'init-better-defaults)

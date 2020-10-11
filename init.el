@@ -27,19 +27,20 @@
      ("m" "名词解释" entry #'org-roam--capture-get-point "
 * 定义
   %?" :file-name "~/Org/org-roam/%<%Y%m%d%H>-${slug}" :head "#+title: ${title}
-#+TAGS:名词解释
+#+roam_tags:名词解释
 " :immediate-finish t :unnarrowed t)
      ("j" "简答题" entry #'org-roam--capture-get-point "
 * 答 
   %?" :file-name "~/Org/org-roam/%<%Y%m%d%H>-${slug}" :head "#+title: ${title}
-#+TAGS:简答题
+#+roam_tags:简答题
 " :immediate-finish t :unnarrowed t)))
+ '(org-roam-completion-everywhere t)
  '(org-roam-completion-system 'ivy)
  '(org-roam-dailies-capture-templates
-   '(("d" "daily" plain #'org-roam-capture--get-point "" :immediate-finish t :file-name "%<%Y-%m-%d>" :head "#+title: %<%Y-%m-%d>" :dir-name "Daily")))
+   '(("d" "daily" plain #'org-roam-capture--get-point "" :immediate-finish t :file-name "~/Org/Daily/%<%Y-%m-%d>" :head "#+title: %<%Y-%m-%d>" :dir-name "Daily")))
  '(org-roam-enable-headline-linking nil)
  '(package-selected-packages
-   '(ayu-theme dashboard doom-modeline doom-themes emojify indent-guide info-colors nyan-mode page-break-lines rainbow-delimiters all-the-icons-dired mood-line all-the-icons org-super-agenda use-package company hungry-delete swiper counsel expand-region iedit auto-yasnippet evil evil-leader window-numbering evil-surround js2-mode which-key web-mode nodejs-repl exec-path-from-shell popwin solarized-theme))
+   '(cl-generic cl-lib ## ayu-theme dashboard doom-modeline doom-themes emojify indent-guide info-colors nyan-mode page-break-lines rainbow-delimiters all-the-icons-dired mood-line all-the-icons org-super-agenda use-package company hungry-delete swiper counsel expand-region iedit auto-yasnippet evil evil-leader window-numbering evil-surround js2-mode which-key web-mode nodejs-repl exec-path-from-shell popwin solarized-theme))
  '(rime-posframe-properties
    '(:background-color "#333333" :foreground-color "#dcdccc" :font "WenQuanYi Micro Hei" :internal-border-width 10)))
 (custom-set-faces
