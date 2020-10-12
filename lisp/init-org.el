@@ -131,4 +131,12 @@
     (interactive)
     (insert "[[roam:]]")
     (backward-char 2))
+(setq org-roam-buffer-window-parameters '((no-other-window . t)))
+(use-package deft
+  :ensure t
+  :bind ("<f8>" . deft)
+  :commands (deft)
+  :config (setq deft-directory "~/Org"
+		deft-recursive t
+                deft-extensions '("md" "org")))
 (provide 'init-org)

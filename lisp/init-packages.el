@@ -161,7 +161,10 @@
        '(("\\.js\\'" . js2-mode))
        auto-mode-alist))
 ;; ---which-key---
-
+(use-package telega
+  :ensure t
+  :commands (telega)
+  :defer t)
 
 
 (provide 'init-packages)
