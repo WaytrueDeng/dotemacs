@@ -24,6 +24,22 @@
  '(org-roam-buffer-width 0.3)
  '(org-roam-capture-templates
    '(("d" "default" plain #'org-roam-capture--get-point :file-name "~/Org/org-roam/%<%Y%m%d%H>-${slug}" :head "#+title: ${title}" :unnarrowed t :jump-to-captured t :immediate-finish t :dir-name "org-roam")
+     ("b" "病" entry #'org-roam--capture-get-point "
+* 要点
+* 定义
+* 病因
+* 分类
+* 症状
+* 体征
+* 病理
+* 病理生理机制
+* 分级
+* 治疗
+* 诊断
+* 预后
+  %?" :file-name "~/Org/org-roam/%<%Y%m%d%H>-${slug}" :head "#+title: ${title}
+#+roam_tags:病
+" :immediate-finish t :unnarrowed t)
      ("m" "名词解释" entry #'org-roam--capture-get-point "
 * 定义
   %?" :file-name "~/Org/org-roam/%<%Y%m%d%H>-${slug}" :head "#+title: ${title}
