@@ -13,10 +13,10 @@
  (rear-context-string . "-windows\n;;  )\n\n")
  (position . 603))
 ("org-capture-last-stored"
- (filename . "~/Org/Daily/2020-10-13.org")
- (front-context-string)
- (rear-context-string . "病.org][呼吸系统疾病]]\n")
- (position . 75))
+ (filename . "~/Org/org-roam/2020101313-通气功能障碍性疾病.org")
+ (front-context-string . "#+title: 通气功能障碍性")
+ (rear-context-string)
+ (position . 1))
 ("init-packages.el"
  (filename . "~/.emacs.d/lisp/init-packages.el")
  (front-context-string . "\n     \"0\"  'sele")
