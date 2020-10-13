@@ -13,6 +13,7 @@
 (define-key evil-normal-state-map (kbd "DEL") 'org-mark-ring-goto)
 (define-key evil-normal-state-map (kbd "Q") 'delete-window)
 (define-key evil-insert-state-map (kbd "[[") #'my/insert-roam-link)
+(define-key evil-insert-state-map (kbd "]]") #'my/changeinto-roam-link)
 
 
 

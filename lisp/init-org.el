@@ -125,6 +125,12 @@
 (setq org-outline-path-complete-in-steps nil)
 (setq org-refile-allow-creating-parent-nodes 'confirm)
 
+(defun my/changeinto-roam-link ()
+    "changeinto-Org-roam link."
+    (interactive)
+    (backward-kill-word 1)
+    (my/insert-roam-link)
+    (yank 1))
 
 (defun my/insert-roam-link ()
     "Inserts an Org-roam link."
