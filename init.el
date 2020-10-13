@@ -6,14 +6,18 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 ;;; package --- summary:
 ; 关闭工具栏，tool-bar-mode 即为一个 Minor Mode
+(tool-bar-mode -1)
 ;;关闭菜单栏
 ;; 关闭文件滑动控件
 (scroll-bar-mode -1)
 
+(setq org-roam-buffer-window-parameters '((no-delete-other-windows . t)))
 
 
-;; 显示行号
-
+(setq
+  display-buffer-alist
+   '(("*org-roam*"
+      (side . bottom))))
 ;; 更改光标的样式（不能生效，解决方案见第二集）
 (setq-default cursor-type 'bar)
 
@@ -298,13 +302,11 @@
 ;;   )
 (use-package company
   :ensure t
-  :defer 2
   :config
   (global-company-mode)
 )
 (use-package counsel
   :ensure t
-  :defer 2
   :commands
   (counsel-mode)
 )
@@ -316,8 +318,7 @@
 )
 (use-package ivy
   :ensure t
-  :defer 2
-  :commands
+  :config
   (ivy-mode)
   )
 (use-package which-key
@@ -514,25 +515,6 @@ recentf-list))
               ("C-n" . #'company-select-next) 
               ("C-p" . #'company-select-previous)) 
       ) 
-;; (use-package sis
-;;   ;; :hook
-;;   ;; enable the /follow context/ and /inline region/ mode for specific buffers
-;;   ;; (((text-mode prog-mode) . sis-follow-context-mode)
-;;   ;;  ((text-mode prog-mode) . sis-inline-mode))
-;;   :ensure t
-;;   :config
-;;   ;; For MacOS
-;;   (sis-ism-lazyman-config "1" "2" 'fcitx5)
-;; 
-;;   ;; enable the /cursor color/ mode
-;;   (sis-global-cursor-color-mode t)
-;;   ;; enable the /respect/ mode
-;;   (sis-global-respect-mode t)
-;;   ;; enable the /follow context/ mode for all buffers
-;;   (sis-global-follow-context-mode t)
-;;   ;; enable the /inline english/ mode for all buffers
-;;   (sis-global-inline-mode t)
-;;   )
 
 (defun my/changeinput2en()
     "this is a function automatic changing input method to en"
@@ -652,7 +634,6 @@ recentf-list))
     (interactive)
     (insert "[[roam:]]")
     (backward-char 2))
-(setq org-roam-buffer-window-parameters '((no-other-window . t)))
 (use-package deft
   :ensure t
   :defer t
@@ -741,7 +722,7 @@ recentf-list))
 (global-set-key (kbd "C-c r") 'counsel-rg)
 (global-set-key (kbd "C-x l") 'counsel-locate)
 (global-set-key (kbd "C-s-o") 'counsel-rhythmbox)
-(define-key minibuffer-local-map (kbd "c-r") 'counsel-minibuffer-history)
+(define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
 ;; recentf
 (define-key global-map [f5] 'my-recentf-open)
 
@@ -762,12 +743,12 @@ recentf-list))
    '("7b3d184d2955990e4df1162aeff6bfb4e1c3e822368f0359e15e2974235d9fa8" "71e5acf6053215f553036482f3340a5445aee364fb2e292c70d9175fb0cc8af7" "a3b6a3708c6692674196266aad1cb19188a6da7b4f961e1369a68f06577afa16" "21055a064d6d673f666baaed35a69519841134829982cbbb76960575f43424db" "e1ef2d5b8091f4953fe17b4ca3dd143d476c106e221d92ded38614266cea3c8b" "c4bdbbd52c8e07112d1bfd00fee22bf0f25e727e95623ecb20c4fa098b74c1bd" "37144b437478e4c235824f0e94afa740ee2c7d16952e69ac3c5ed4352209eefb" "c433c87bd4b64b8ba9890e8ed64597ea0f8eb0396f4c9a9e01bd20a04d15d358" "51ec7bfa54adf5fff5d466248ea6431097f5a18224788d0bd7eb1257a4f7b773" "0fffa9669425ff140ff2ae8568c7719705ef33b7a927a0ba7c5e2ffcfac09b75" "2c613514f52fb56d34d00cc074fe6b5f4769b4b7f0cc12d22787808addcef12c" "c0a0c2f40c110b5b212eb4f2dad6ac9cac07eb70380631151fa75556b0100063" "dde8c620311ea241c0b490af8e6f570fdd3b941d7bc209e55cd87884eb733b0e" "5d09b4ad5649fea40249dd937eaaa8f8a229db1cec9a1a0ef0de3ccf63523014" "9efb2d10bfb38fe7cd4586afb3e644d082cbcdb7435f3d1e8dd9413cbe5e61fc" "2f1518e906a8b60fac943d02ad415f1d8b3933a5a7f75e307e6e9a26ef5bf570" "99ea831ca79a916f1bd789de366b639d09811501e8c092c85b2cb7d697777f93" "3325e2c49c8cc81a8cc94b0d57f1975e6562858db5de840b03338529c64f58d1" "7f1d414afda803f3244c6fb4c2c64bea44dac040ed3731ec9d75275b9e831fe5" "13a8eaddb003fd0d561096e11e1a91b029d3c9d64554f8e897b2513dbf14b277" "00445e6f15d31e9afaa23ed0d765850e9cd5e929be5e8e63b114a3346236c44c" "2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" default))
  '(evil-leader/in-all-states t)
  '(evil-leader/leader "SPC")
- '(org-roam-buffer-width 0.3)
+ '(org-roam-buffer-width 0.15)
  '(org-roam-capture-templates
    '(("d" "default" plain #'org-roam-capture--get-point :file-name "~/Org/org-roam/%<%Y%m%d%H>-${slug}" :head "#+title: ${title}" :unnarrowed t :jump-to-captured t :immediate-finish t :dir-name "org-roam")
      ("b" "病" entry #'org-roam--capture-get-point "
 * 要点
-* 定义
+* 定义%?
 * 病因
 * 分类
 * 症状
@@ -777,8 +758,7 @@ recentf-list))
 * 分级
 * 治疗
 * 诊断
-* 预后
-  %?" :file-name "~/Org/org-roam/%<%Y%m%d%H>-${slug}" :head "#+title: ${title}
+* 预后" :file-name "~/Org/org-roam/%<%Y%m%d%H>-${slug}" :head "#+title: ${title}
 #+roam_tags:病
 " :immediate-finish t :unnarrowed t)
      ("m" "名词解释" entry #'org-roam--capture-get-point "
@@ -792,10 +772,10 @@ recentf-list))
 #+roam_tags:简答题
 " :immediate-finish t :unnarrowed t)))
  '(org-roam-completion-everywhere t)
- '(org-roam-completion-system 'ivy)
+ '(org-roam-completion-system 'default)
  '(org-roam-dailies-capture-templates
-   '(("d" "daily" plain #'org-roam-capture--get-point "" :immediate-finish t :file-name "~/Org/Daily/%<%Y-%m-%d>" :head "#+title: %<%Y-%m-%d>\\n#+roam_tags:Diary" :dir-name "Daily")))
- '(org-roam-enable-headline-linking nil)
+   '(("d" "daily" plain #'org-roam-capture--get-point "" :immediate-finish t :file-name "~/Org/Daily/%<%Y-%m-%d>" :head "#+title: %<%Y-%m-%d>")))
+ '(org-roam-enable-headline-linking t)
  '(package-selected-packages
    '(cl-generic cl-lib ## ayu-theme dashboard doom-modeline doom-themes emojify indent-guide info-colors nyan-mode page-break-lines rainbow-delimiters all-the-icons-dired mood-line all-the-icons org-super-agenda use-package company hungry-delete swiper counsel expand-region iedit auto-yasnippet evil evil-leader window-numbering evil-surround js2-mode which-key web-mode nodejs-repl exec-path-from-shell popwin solarized-theme))
  '(rime-posframe-properties
