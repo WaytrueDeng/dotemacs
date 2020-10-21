@@ -1,0 +1,4 @@
+/home/waytrue/.emacs.d/elpa/vterm-20201004.2057/build/CMakeFiles/rebuild_cache.dir
+/home/waytrue/.emacs.d/elpa/vterm-20201004.2057/build/CMakeFiles/edit_cache.dir
+/home/waytrue/.emacs.d/elpa/vterm-20201004.2057/build/CMakeFiles/run.dir
+/home/waytrue/.emacs.d/elpa/vterm-20201004.2057/build/CMakeFiles/vterm-module.dir

@@ -9,3 +9,8 @@ https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3D
 https://www.bilibili.com/
 https://www.bilibili.com/ranking?spm_id_from=333.851.b_7072696d61727950616765546162.3
 http://127.0.0.1:8080/
+https://game.bilibili.com/pcr/hmkna/
+https://www.youtube.com/feed/subscriptions
+https://www.bilibili.com/
+https://www.bilibili.com/video/BV1Sz4y1d7Hx
+https://www.bilibili.com/?spm_id_from=333.788.b_696e7465726e6174696f6e616c486561646572.1
