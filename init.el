@@ -182,8 +182,8 @@
 (use-package cl
   )
 
-(use-package vterm
-    :ensure t)
+;;(use-package vterm
+;;    :ensure t)
 
 
 (use-package evil-leader
@@ -287,14 +287,14 @@
        (when (not (package-installed-p pkg))
 	 (package-install pkg))))
 
- (use-package eaf
-   :load-path "~/.emacs.d/site-lisp/emacs-application-framework" ; Set to "/usr/share/emacs/site-lisp/eaf" if installed from AUR
-   :custom
-   (eaf-find-alternate-file-in-dired t)
-   :config
-   (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding)
-   (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding)
-   (eaf-bind-key take_photo "p" eaf-camera-keybinding))
+ ;; (use-package eaf
+   ;; :load-path "~/.emacs.d/site-lisp/emacs-application-framework" ; Set to "/usr/share/emacs/site-lisp/eaf" if installed from AUR
+   ;; :custom
+   ;; (eaf-find-alternate-file-in-dired t)
+   ;; :config
+   ;; (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding)
+   ;; (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding)
+   ;; (eaf-bind-key take_photo "p" eaf-camera-keybinding))
 
 ;; 启动插件
 ;; (global-evil-leader-mode 1)
@@ -335,10 +335,10 @@
        '(("\\.js\\'" . js2-mode))
        auto-mode-alist))
 ;; ---which-key---
-(use-package telega
-  :ensure t
-  :commands (telega)
-  :defer t)
+;;(use-package telega
+;;  :ensure t
+;;  :commands (telega)
+;;  :defer t)
 
 
 ;; BETTERDEFAULT
@@ -359,7 +359,6 @@
 ;; Avoid #file.org# to appear
 (setq create-lockfiles nil)
 ;; Avoid filename.ext~ to appear
-(setq make-backup-files nil)
 ;; 关闭自动换行
 ;; (setq truncate-partial-width-windows t)
 ;; 创建新行的动作
@@ -430,6 +429,9 @@
   :defer t
   :commands (popwin-mode))
 
+(use-package nix-mode
+  :ensure t
+  )
 ;; 关闭警告音量
 (setq ring-bell-function 'ignore)
 
@@ -482,6 +484,12 @@ recentf-list))
   (find-file "~/Org/index.org"))
 
 
+;(use-package rime
+;  :ensure t
+;  :custom
+;  (default-input-method "rime")
+;  (rime-user-data-dir ~/.local/share/fcitx5/rime))
+
 ;; 撤销树
 ;;(use-package 
 ;;  undo-tree 
@@ -515,14 +523,14 @@ recentf-list))
 (defun my/changeinput2en()
     "this is a function automatic changing input method to en"
   (interactive)
-  (shell-command "fcitx5-remote -c"))
+  (shell-command "fcitx-remote -c"))
 
 (defun my/changeinput2cn()
     "this is a function automatic changing input method to en"
   (interactive)
-  (shell-command "fcitx5-remote -o"))
+  (shell-command "fcitx-remote -o"))
 (add-hook 'evil-insert-state-entry-hook #'my/changeinput2cn)
-(add-hook 'evil-normal-state-entry-hook #'my/changeinput2en)
+(add-hook 'evil-insert-state-exit-hook #'my/changeinput2en)
 
 
 ;; INITORG
@@ -533,10 +541,10 @@ recentf-list))
   :config
 (global-linum-mode)
   )
-(setcar (nthcdr 0 org-emphasis-regexp-components) " \t('\"{[:nonascii:]")
-(setcar (nthcdr 1 org-emphasis-regexp-components) "- \t.,:!?;'\")}\\[[:nonascii:]")
-(org-set-emph-re 'org-emphasis-regexp-components org-emphasis-regexp-components)
-(org-element-update-syntax)
+;;(setcar (nthcdr 0 org-emphasis-regexp-components) " \t('\"{[:nonascii:]")
+;;(setcar (nthcdr 1 org-emphasis-regexp-components) "- \t.,:!?;'\")}\\[[:nonascii:]")
+;;(org-set-emph-re 'org-emphasis-regexp-components org-emphasis-regexp-components)
+;;(org-element-update-syntax)
 ;; 规定上下标必须加 {}，否则中文使用下划线时它会以为是两个连着的下标
 (setq org-use-sub-superscripts "{}")
 ;; (setq org-src-fontify-natively t)
@@ -566,8 +574,9 @@ recentf-list))
 
 (use-package org-roam
       :ensure t
+      :defer 30
       :hook
-      (after-init . org-roam-mode)
+      (prog-mode . org-roam-mode)
       :custom
       (org-roam-directory "~/Org/")
       :bind (:map org-roam-mode-map
@@ -751,7 +760,7 @@ recentf-list))
  '(exwm-replace t)
  '(org-roam-buffer-width 0.2)
  '(org-roam-capture-templates
-   '(("d" "default" plain #'org-roam-capture--get-point :file-name "~/Org/%<%Y%m%d%H>-${slug}" :head "#+title: ${title}" :unnarrowed t :jump-to-captured t :immediate-finish t )
+   '(("d" "default" plain #'org-roam-capture--get-point :file-name "~/Org/Orgall/%<%Y%m%d%H>-${slug}" :head "#+title: ${title}" :unnarrowed t :jump-to-captured t :immediate-finish t)
      ("b" "病" entry #'org-roam--capture-get-point "
 * 要点
 * 定义%?
@@ -765,24 +774,25 @@ recentf-list))
 * 分级
 * 治疗
 * 诊断
-* 预后" :file-name "~/Org/%<%Y%m%d%H>-${slug}" :head "#+title: ${title}
+* 预后" :file-name "~/Org/Orgall/%<%Y%m%d%H>-${slug}" :head "#+title: ${title}
 #+roam_tags:病
 " :immediate-finish t :unnarrowed t)
      ("m" "名词解释" entry #'org-roam--capture-get-point "
 * 定义
-  %?" :file-name "~/Org/%<%Y%m%d%H>-${slug}" :head "#+title: ${title}
+  %?" :file-name "~/Org/Orgall/%<%Y%m%d%H>-${slug}" :head "#+title: ${title}
 #+roam_tags:名词解释
 " :immediate-finish t :unnarrowed t)
      ("j" "简答题" entry #'org-roam--capture-get-point "
 * 答 
-  %?" :file-name "~/Org/%<%Y%m%d%H>-${slug}" :head "#+title: ${title}
+  %?" :file-name "~/Org/Orgall/%<%Y%m%d%H>-${slug}" :head "#+title: ${title}
 #+roam_tags:简答题
 " :immediate-finish t :unnarrowed t)))
  '(org-roam-completion-everywhere t)
  '(org-roam-completion-system 'default)
  '(org-roam-dailies-capture-templates
-   '(("d" "daily" plain #'org-roam-capture--get-point "" :immediate-finish t :file-name "~/Org/%<%Y-%m-%d>" :head "#+title: %<%Y-%m-%d>")))
+   '(("d" "daily" plain #'org-roam-capture--get-point "" :immediate-finish t :file-name "~/Org/Orgall/%<%Y-%m-%d>" :head "#+title: %<%Y-%m-%d>")))
  '(org-roam-enable-headline-linking t)
+ '(org-roam-update-db-idle-seconds 2)
  '(package-selected-packages
    '(cl-generic cl-lib ## ayu-theme dashboard doom-modeline doom-themes emojify indent-guide info-colors nyan-mode page-break-lines rainbow-delimiters all-the-icons-dired mood-line all-the-icons org-super-agenda use-package company hungry-delete swiper counsel expand-region iedit auto-yasnippet evil evil-leader window-numbering evil-surround js2-mode which-key web-mode nodejs-repl exec-path-from-shell popwin solarized-theme))
  '(rime-posframe-properties

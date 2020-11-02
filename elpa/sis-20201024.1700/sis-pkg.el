@@ -1,0 +1,2 @@
+;;; Generated package description from /home/waytrue/.emacs.d/elpa/sis-20201024.1700/sis.el  -*- no-byte-compile: t -*-
+(define-package "sis" "20201024.1700" "Less manual switch for native or OS input source (input method)." '((emacs "25.1") (terminal-focus-reporting "0.0")) :commit "e619e8e19ca777ecd9e3598bd183cb791d3ec786" :keywords '("convenience") :url "https://github.com/laishulu/emacs-smart-input-source")

@@ -1,3 +1,32 @@
 ls
 neofetch 
 ranger
+ls
+cd ..
+ls 
+neofetch 
+ls 
+cd Documents/
+ls 
+cd ventoy-1.0.26/
+ls 
+man emacs
+yay -S deepin-screen
+yay -S deepin-screenshot
+cd ..
+cd 
+cd Org/
+ls 
+ld 
+ldd
+clear 
+ls l
+ls 
+nix-build default.nix
+exit
+neofetch 
+htop
+ls 
+ls 
+zsh 
+ls
