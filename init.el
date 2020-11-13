@@ -73,7 +73,7 @@
 (use-package emojify
   :ensure t
   :custom (emojify-emojis-dir "~/.emacs.d/emojis")
-  :hook telega-mode)
+  :hook ('after-init-hook . #'global-emojify-mode))
 
 ;; 竖线
 ;; (use-package
@@ -523,12 +523,14 @@ recentf-list))
 (defun my/changeinput2en()
     "this is a function automatic changing input method to en"
   (interactive)
-  (shell-command "fcitx-remote -c"))
+(if (eq major-mode 'org-mode)
+  (shell-command "fcitx5-remote -c")))
 
 (defun my/changeinput2cn()
     "this is a function automatic changing input method to en"
   (interactive)
-  (shell-command "fcitx-remote -o"))
+(if (eq major-mode 'org-mode)
+  (shell-command "fcitx5-remote -o")))
 (add-hook 'evil-insert-state-entry-hook #'my/changeinput2cn)
 (add-hook 'evil-insert-state-exit-hook #'my/changeinput2en)
 
@@ -576,7 +578,7 @@ recentf-list))
       :ensure t
       :defer 30
       :hook
-      (prog-mode . org-roam-mode)
+       (after-init . org-roam-mode)
       :custom
       (org-roam-directory "~/Org/")
       :bind (:map org-roam-mode-map
@@ -758,6 +760,7 @@ recentf-list))
  '(evil-leader/leader "SPC")
  '(exwm-manage-force-tiling t)
  '(exwm-replace t)
+ '(org-bullets-bullet-list '("◉" "○" "●" "✚"))
  '(org-roam-buffer-width 0.2)
  '(org-roam-capture-templates
    '(("d" "default" plain #'org-roam-capture--get-point :file-name "~/Org/Orgall/%<%Y%m%d%H>-${slug}" :head "#+title: ${title}" :unnarrowed t :jump-to-captured t :immediate-finish t)

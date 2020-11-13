@@ -30,3 +30,10 @@ ls
 ls 
 zsh 
 ls
+ne -q
+necd
+cd 
+zsh 
+exit
+alacritty 
+sudo reboot
