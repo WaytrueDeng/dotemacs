@@ -13,10 +13,10 @@
  (rear-context-string . "-windows\n;;  )\n\n")
  (position . 603))
 ("org-capture-last-stored"
- (filename . "~/Org/Orgall/2020-11-13.org")
- (front-context-string)
- (rear-context-string . "tle: 2020-11-13\n")
- (position . 21))
+ (filename . "~/Org/Orgall/2020-11-17.org")
+ (front-context-string . "#+title: 2020-11")
+ (rear-context-string)
+ (position . 1))
 ("init-packages.el"
  (filename . "~/.emacs.d/lisp/init-packages.el")
  (front-context-string . "\n     \"0\"  'sele")
