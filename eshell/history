@@ -37,3 +37,26 @@ zsh
 exit
 alacritty 
 sudo reboot
+ls 
+rm 1
+ls 
+neofetch 
+ls 
+cd 
+sshfs root@192.168.1.128:/sdcard/ Phone/
+ls 
+cd Phone/
+ls 
+cd .
+mount 
+sshfs root@192.168.1.128:/sdcard/ Phone/
+cd 
+sshfs root@192.168.1.128:/sdcard/ Phone/
+sshfs root@192.168.1.128:/sdcard/ Phone/
+cd Phone/
+ls 
+cd ..
+ls 
+ls 
+cd Phone/
+ls 

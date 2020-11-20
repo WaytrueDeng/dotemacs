@@ -8,5 +8,6 @@
  (magit-remote
   ("-f"))
  (magit-remote\.<remote>\.*url "git@github.com:WaytrueDeng/Org.git" "git@github.com:/WaytrueDeng/Org" "git@github.")
+ (magit-run nil)
  (magit-status-jump nil)
  (magit-worktree nil))
