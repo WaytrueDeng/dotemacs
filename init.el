@@ -89,7 +89,7 @@
 (use-package emojify
   :ensure t
   :custom (emojify-emojis-dir "~/.emacs.d/emojis")
-  :hook ('after-init-hook . #'global-emojify-mode))
+  :hook (after-init . global-emojify-mode))
 
 ;; 竖线
 ;; (use-package
@@ -248,6 +248,9 @@
      )
    )
 
+(use-package evil-magit
+  :ensure t)
+
 (use-package evil
   :config
   (evil-mode 1)
@@ -299,7 +302,6 @@
 		swiper
 		expand-region
 		iedit
-		auto-yasnippet
 		;; --- Major Mode ---
 		js2-mode
 		web-mode
@@ -326,6 +328,11 @@
      (dolist (pkg my/packages)
        (when (not (package-installed-p pkg))
 	 (package-install pkg))))
+(use-package valign
+  :load-path "~/.emacs.d/site-lisp/valign"
+  :hook
+  (org-mode . valign-mode))
+
 
  ;; (use-package eaf
    ;; :load-path "~/.emacs.d/site-lisp/emacs-application-framework" ; Set to "/usr/share/emacs/site-lisp/eaf" if installed from AUR
@@ -363,6 +370,11 @@
   :ensure t
   :config
   (ivy-rich-mode))
+(use-package ivy-posframe
+  :ensure t
+  :config
+   (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-center)))
+   (ivy-posframe-mode 1))
 (use-package which-key
   :ensure t
   :defer 2
@@ -462,14 +474,10 @@
 	      (regexp-quote sym))))
 	regexp-history)
   (call-interactively 'occur))
-
 ;;  (defun efs/exwm-update-class ()
 ;;    (exwm-workspace-rename-buffer exwm-class-name))
 ;; (defun my/swapescaps ()
 ;; (shell-command "setxkbmap -option caps:swapescape"))
-;; (defun my/enableinputmethod ()
-;; (shell-command "fcitx5 &"))
-;;  
 ;;  (use-package exwm
 ;;    :ensure t
 ;;    :config
@@ -481,7 +489,6 @@
 ;;    
 ;;    ;; Rebind CapsLock to Ctrl
 ;;    (add-hook 'exwm-init-hook #'my/swapescaps)
-;;    (add-hook 'exwm-init-hook #'my/enableinputmethod)
 ;;    ;; Set the screen resolution (update this to be the correct resolution for your screen!)
 ;;    (require 'exwm-randr)
 ;;    (exwm-randr-enable)
@@ -619,17 +626,25 @@ recentf-list))
 ;  :custom
 ;  (default-input-method "rime")
 ;  (rime-user-data-dir ~/.local/share/fcitx5/rime))
+(use-package yasnippet-snippets
+  :ensure t
+  :config
+  )
+(use-package yasnippet
+  :ensure t
+  :config
+  (yas-global-mode 1))
 
 ;; 撤销树
-;;(use-package 
-;;  undo-tree 
-;;  :ensure t 
-;;  :hook (after-init . global-undo-tree-mode) 
-;;  :init (setq undo-tree-visualizer-timestamps t undo-tree-enable-undo-in-region nil undo-tree-auto-save-history nil)
-;;
-;;  ;; HACK: keep the diff window
-;;  (with-no-warnings (make-variable-buffer-local 'undo-tree-visualizer-diff) 
-;;                    (setq-default undo-tree-visualizer-diff t)))
+(use-package 
+  undo-tree 
+  :ensure t 
+  :hook (after-init . global-undo-tree-mode) 
+  :init (setq undo-tree-visualizer-timestamps t undo-tree-enable-undo-in-region nil undo-tree-auto-save-history nil)
+
+  ;; HACK: keep the diff window
+  (with-no-warnings (make-variable-buffer-local 'undo-tree-visualizer-diff) 
+                    (setq-default undo-tree-visualizer-diff t)))
 ;; 项目管理
 (use-package go-translate
   :ensure t
@@ -691,7 +706,29 @@ recentf-list))
         org-src-preserve-indentation nil
         org-cycle-separator-lines 2)
   )
+(use-package org-ref
+  :ensure t)
 
+(setq reftex-default-bibliography '("~/Org/references.bib"))
+
+;; see org-ref for use of these variables
+(setq org-ref-bibliography-notes "~/Org/notes.org"
+      org-ref-default-bibliography '("~/Org/references.bib")
+      org-ref-pdf-directory "~/Org/bibliography/bibtex-pdfs/")
+
+(org-babel-do-load-languages
+      'org-babel-load-languages
+      '((emacs-lisp . t)
+        (C . t)
+        (java . t)
+        (js . t)
+        (ruby . t)
+        (ditaa . t)
+        (python . t)
+        (shell . t)
+        (latex . t)
+        (plantuml . t)
+        (R . t)))
 ;;(setcar (nthcdr 0 org-emphasis-regexp-components) " \t('\"{[:nonascii:]")
 ;;(setcar (nthcdr 1 org-emphasis-regexp-components) "- \t.,:!?;'\")}\\[[:nonascii:]")
 ;;(org-set-emph-re 'org-emphasis-regexp-components org-emphasis-regexp-components)
@@ -702,7 +739,7 @@ recentf-list))
 (setq evil-org-set-key-theme '(navigation insert textobjects additional calendar))
 
 (setq org-log-done 'time)
-;; 设置默认 Org Agenda 文件目录
+;; 设置默认 org agenda 文件目录
 (setq org-agenda-files '("~/Org"))
 (setq org-startup-indented t)
 ;; ---org-capture---
@@ -724,6 +761,7 @@ recentf-list))
 
 (use-package cl-lib
   :ensure t)
+
 (use-package evil-org
   :ensure t
   :after org
@@ -734,6 +772,13 @@ recentf-list))
               (evil-org-set-key-theme)))
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
+
+(use-package org-download
+  :after org
+  :bind
+  (:map org-mode-map
+        (("s-Y" . org-download-screenshot)
+         ("s-y" . org-download-yank))))
 
 (use-package org-roam
       :ensure t
@@ -818,6 +863,42 @@ recentf-list))
     (insert "[[roam:]]")
     (backward-char 2))
 
+(defun my/auto-highlighting ()
+    "auto-highlighting"
+    (interactive)
+    (backward-word)
+    (insert "~")
+    (forward-word)
+    (insert "~")
+    (forward-char 1))
+
+(defun my/auto-strikethrough()
+    "auto-highlighting"
+    (interactive)
+    (backward-word)
+    (insert "+")
+    (forward-word)
+    (insert "+")
+    (forward-char 1))
+
+(defun my/auto-bold()
+    "auto-highlighting"
+    (interactive)
+    (backward-word)
+    (insert "*")
+    (forward-word)
+    (insert "*")
+    (forward-char 1))
+
+(defun my/auto-underline()
+    "auto-underline"
+    (interactive)
+    (backward-word)
+    (insert "_")
+    (forward-word)
+    (insert "_")
+    (forward-char 1))
+
 (defun my/auto-rice-English-Word ()
     "auto-rice-English-Word."
     (interactive)
@@ -825,6 +906,7 @@ recentf-list))
     (my/insert-roam-link)
     (yank 1)
     (let* ((title (current-word)) )
+      (unless (member title (org-roam--get-titles))
       (let ((org-roam-capture--info (list (cons 'title title)
 					  (cons 'slug (funcall org-roam-title-to-slug-function title))))
             (org-roam-capture--context 'title)
@@ -835,9 +917,10 @@ recentf-list))
                            (error-message-string err))))
       (youdao-dictionary-search-at-point)
       (with-current-buffer  "*Youdao Dictionary*"
-	(write-region nil nil org-file-path t)))
+	(write-region nil nil org-file-path t))))
       
-    ))
+      )
+    (forward-char 2))
 
 
 (use-package deft
@@ -854,12 +937,8 @@ recentf-list))
 ;; KEYBINDING
 
 ;; aya-snippet
-(global-set-key (kbd "s-w") #'aya-create)
-(global-set-key (kbd "s-y") #'aya-expand)
 ;; 这一行代码，将函数 open-init-file 绑定到 <f2> 键上
 (global-set-key (kbd "<f2>") 'open-init-file)
-;; emacs
-(global-set-key (kbd "C-w") 'backward-kill-word)
 
 ;; evil
 (setcdr evil-insert-state-map nil)
@@ -868,9 +947,13 @@ recentf-list))
 (define-key evil-normal-state-map (kbd "DEL") 'org-mark-ring-goto)
 (define-key evil-normal-state-map (kbd "Q") 'kill-buffer-and-window)
 (define-key evil-normal-state-map (kbd "S") 'save-buffer)
-(define-key evil-insert-state-map (kbd "[[") #'my/insert-roam-link)
-(define-key evil-insert-state-map (kbd "]]") #'my/changeinto-roam-link)
-(define-key evil-insert-state-map (kbd "}}") #'my/auto-rice-English-Word)
+(define-key evil-insert-state-map (kbd "M-[") #'my/insert-roam-link)
+(define-key evil-insert-state-map (kbd "M-]") #'my/changeinto-roam-link)
+(define-key evil-insert-state-map (kbd "M-}") #'my/auto-rice-English-Word)
+(define-key evil-insert-state-map (kbd "M-~") #'my/auto-highlighting)
+(define-key evil-insert-state-map (kbd "M-*") #'my/auto-bold)
+(define-key evil-insert-state-map (kbd "M-+") #'my/auto-strikethrough)
+(define-key evil-insert-state-map (kbd "M-_") #'my/auto-underline)
 
 
 
@@ -941,12 +1024,13 @@ recentf-list))
  ;; If there is more than one, they won't work right.
  '(company-begin-commands
    '(self-insert-command org-self-insert-command orgtbl-self-insert-command c-scope-operator c-electric-colon c-electric-lt-gt c-electric-slash))
- '(company-minimum-prefix-length 1)
+ '(company-minimum-prefix-length 2)
  '(custom-enabled-themes '(doom-snazzy))
  '(custom-safe-themes
    '("c83c095dd01cde64b631fb0fe5980587deec3834dc55144a6e78ff91ebc80b19" "7b3d184d2955990e4df1162aeff6bfb4e1c3e822368f0359e15e2974235d9fa8" "71e5acf6053215f553036482f3340a5445aee364fb2e292c70d9175fb0cc8af7" "a3b6a3708c6692674196266aad1cb19188a6da7b4f961e1369a68f06577afa16" "21055a064d6d673f666baaed35a69519841134829982cbbb76960575f43424db" "e1ef2d5b8091f4953fe17b4ca3dd143d476c106e221d92ded38614266cea3c8b" "c4bdbbd52c8e07112d1bfd00fee22bf0f25e727e95623ecb20c4fa098b74c1bd" "37144b437478e4c235824f0e94afa740ee2c7d16952e69ac3c5ed4352209eefb" "c433c87bd4b64b8ba9890e8ed64597ea0f8eb0396f4c9a9e01bd20a04d15d358" "51ec7bfa54adf5fff5d466248ea6431097f5a18224788d0bd7eb1257a4f7b773" "0fffa9669425ff140ff2ae8568c7719705ef33b7a927a0ba7c5e2ffcfac09b75" "2c613514f52fb56d34d00cc074fe6b5f4769b4b7f0cc12d22787808addcef12c" "c0a0c2f40c110b5b212eb4f2dad6ac9cac07eb70380631151fa75556b0100063" "dde8c620311ea241c0b490af8e6f570fdd3b941d7bc209e55cd87884eb733b0e" "5d09b4ad5649fea40249dd937eaaa8f8a229db1cec9a1a0ef0de3ccf63523014" "9efb2d10bfb38fe7cd4586afb3e644d082cbcdb7435f3d1e8dd9413cbe5e61fc" "2f1518e906a8b60fac943d02ad415f1d8b3933a5a7f75e307e6e9a26ef5bf570" "99ea831ca79a916f1bd789de366b639d09811501e8c092c85b2cb7d697777f93" "3325e2c49c8cc81a8cc94b0d57f1975e6562858db5de840b03338529c64f58d1" "7f1d414afda803f3244c6fb4c2c64bea44dac040ed3731ec9d75275b9e831fe5" "13a8eaddb003fd0d561096e11e1a91b029d3c9d64554f8e897b2513dbf14b277" "00445e6f15d31e9afaa23ed0d765850e9cd5e929be5e8e63b114a3346236c44c" "2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" default))
  '(evil-leader/in-all-states t)
  '(evil-leader/leader "SPC")
+ '(evil-undo-system 'undo-tree)
  '(org-roam-buffer-width 0.2)
  '(org-roam-capture-templates
    '(("d" "default" plain #'org-roam-capture--get-point :file-name "~/Org/Orgall/%<%Y%m%d%H>-${slug}" :head "#+title: ${title}" :unnarrowed t :jump-to-captured t :immediate-finish t)
@@ -985,10 +1069,10 @@ recentf-list))
  '(org-roam-completion-system 'default)
  '(org-roam-dailies-capture-templates
    '(("d" "daily" plain #'org-roam-capture--get-point "" :immediate-finish t :file-name "~/Org/Orgall/%<%Y-%m-%d>" :head "#+title: %<%Y-%m-%d>")))
+ '(org-roam-db-update-idle-seconds 2)
  '(org-roam-enable-headline-linking t)
- '(org-roam-update-db-idle-seconds 2)
  '(package-selected-packages
-   '(lsp-ivy lsp-latex lsp-ui lsp-treemacs dap-mode lsp-mode cl-generic cl-lib ## ayu-theme dashboard doom-modeline doom-themes emojify indent-guide info-colors nyan-mode page-break-lines rainbow-delimiters all-the-icons-dired mood-line all-the-icons org-super-agenda use-package company hungry-delete swiper counsel expand-region iedit auto-yasnippet evil evil-leader window-numbering evil-surround js2-mode which-key web-mode nodejs-repl exec-path-from-shell popwin solarized-theme))
+   '(org-download lsp-ivy lsp-latex lsp-ui lsp-treemacs dap-mode lsp-mode cl-generic cl-lib ## ayu-theme dashboard doom-modeline doom-themes emojify indent-guide info-colors nyan-mode page-break-lines rainbow-delimiters all-the-icons-dired mood-line all-the-icons org-super-agenda use-package company hungry-delete swiper counsel expand-region iedit auto-yasnippet evil evil-leader window-numbering evil-surround js2-mode which-key web-mode nodejs-repl exec-path-from-shell popwin solarized-theme))
  '(pdf-tools-enabled-modes
    '(pdf-history-minor-mode pdf-isearch-minor-mode pdf-links-minor-mode pdf-misc-minor-mode pdf-outline-minor-mode pdf-misc-size-indication-minor-mode pdf-misc-menu-bar-minor-mode pdf-annot-minor-mode pdf-sync-minor-mode pdf-misc-context-menu-minor-mode pdf-cache-prefetch-minor-mode pdf-occur-global-minor-mode pdf-virtual-global-minor-mode))
  '(rime-posframe-properties
